@@ -1,3 +1,29 @@
 <ion-app>
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Flora & Fauna</ion-title>
+
+      <ion-buttons slot="end">
+        <ng-container *ngIf="!user">
+          <ion-button routerLink="/login">Login</ion-button>
+          <ion-button routerLink="/register">Register</ion-button>
+        </ng-container>
+        <ng-container *ngIf="user">
+          <ion-button routerLink="/item-list/animal">Animales</ion-button>
+          <ion-button routerLink="/item-list/planta">Plantas</ion-button>
+          <ion-button routerLink="/favorites">Mis favoritos</ion-button>
+          <ion-button (click)="logout()">Logout</ion-button>
+        </ng-container>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
   <ion-router-outlet></ion-router-outlet>
 </ion-app>
+
+
+<!--
+<ion-app>
+  <ion-router-outlet></ion-router-outlet>
+</ion-app>
+-->

@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Lista de {{ tipo }}s</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let item of items$ | async" (click)="openDetail(item.id!)">
+      <ion-thumbnail slot="start">
+        <img [src]="item.imagenUrl" />
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ item.nombre }}</h2>
+        <p>{{ item.descripcion }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addNewItem()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+
+
+<!--
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>item-list</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">item-list</ion-title>
+    </ion-toolbar>
+  </ion-header>
+</ion-content>
+-->
