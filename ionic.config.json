@@ -1,0 +1,7 @@
+{
+  "name": "flora-fauna-favorita-ionic-firebase",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
