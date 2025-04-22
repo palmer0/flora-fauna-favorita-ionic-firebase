@@ -21,7 +21,7 @@ import {doc, Firestore, onSnapshot} from "@angular/fire/firestore";
 export class ItemDetailPage implements OnInit {
 
   item$!: Observable<Item>;
-  itemId!: string;
+  //itemId!: string;
   isFavorito = false;
   user: User | null = null;
 
