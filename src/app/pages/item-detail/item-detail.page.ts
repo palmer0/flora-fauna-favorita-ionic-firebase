@@ -9,6 +9,7 @@ import {IonicModule} from "@ionic/angular";
 import {ItemFavoritesService} from "../../services/item-favorites.service";
 import {UserAuthService} from "../../services/user-auth.service";
 import {User} from "@angular/fire/auth";
+import {doc, Firestore, onSnapshot} from "@angular/fire/firestore";
 
 @Component({
   selector: 'app-item-detail',
@@ -28,10 +29,12 @@ export class ItemDetailPage implements OnInit {
     private route: ActivatedRoute,
     private favoritosService: ItemFavoritesService,
     private authService: UserAuthService,
-    private itemListService: ItemListService
+    private itemListService: ItemListService,
+    private firestore: Firestore,
   ) {}
 
 
+  /*
   ngOnInit() {
     this.itemId = this.route.snapshot.paramMap.get('id')!;
     this.item$ = this.itemListService.getItemById(this.itemId);
@@ -47,6 +50,30 @@ export class ItemDetailPage implements OnInit {
       }
     });
   }
+  */
+
+  ngOnInit() {
+
+    this.route.paramMap.subscribe(async params => {
+      const id = params.get('id');
+      if (!id) return;
+
+      this.item$ = this.itemListService.getItemById(id);
+
+      this.authService.currentUser$.subscribe(user => {
+        this.user = user;
+        if (user) {
+          const favDocRef =
+            doc(this.firestore, `users/${user.uid}/favoritos/${id}`);
+
+          // Escucha en tiempo real si este item está en favoritos
+          onSnapshot(favDocRef, docSnap => {
+            this.isFavorito = docSnap.exists();
+          });
+        }
+      });
+    });
+  }
 
   async toggleFavorito(item: Item) {
     if (!this.user) return;
@@ -58,7 +85,7 @@ export class ItemDetailPage implements OnInit {
       await this.favoritosService.addFavorito(item);
     }
 
-    this.isFavorito = !this.isFavorito;
+    // this.isFavorito = !this.isFavorito;
   }
 
 }

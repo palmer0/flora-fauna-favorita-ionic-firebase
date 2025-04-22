@@ -96,7 +96,7 @@
 
 
   <!-- Contenido principal -->
-  <div class="ion-page" id="main-content">
+  <ion-content fullscreen="true" id="main-content">
     <ion-header>
       <ion-toolbar color="primary">
 
@@ -110,7 +110,24 @@
     </ion-header>
 
     <ion-router-outlet></ion-router-outlet>
+  </ion-content>
+
+  <!--
+  <div class="ion-page" id="main-content">
+    <ion-header>
+      <ion-toolbar color="primary">
+
+        <ion-buttons slot="start">
+          <ion-menu-button autoHide="false"></ion-menu-button>
+        </ion-buttons>
+
+        <ion-title>Flora & Fauna</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-router-outlet></ion-router-outlet>
   </div>
+  -->
 </ion-app>
 
 
