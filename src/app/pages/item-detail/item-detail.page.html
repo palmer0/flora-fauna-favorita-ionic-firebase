@@ -18,9 +18,9 @@
       <ion-badge color="success">{{ item.vecesElegido }} votos</ion-badge>
     </ion-card-content>
 
-
-    <ion-item *ngIf="user" lines="none">
-      <ion-label>Favorito</ion-label>
+    <!-- Switch de "Favorito" a su izquierda -->
+    <ion-item *ngIf="user" lines="none" class="justify-end">
+      <ion-label slot="end" style="margin-right: 6px">Favorito</ion-label>
       <ion-toggle
         slot="end"
         [checked]="isFavorito"
@@ -29,6 +29,7 @@
       ></ion-toggle>
     </ion-item>
   </ion-card>
+
 
 </ion-content>
 
