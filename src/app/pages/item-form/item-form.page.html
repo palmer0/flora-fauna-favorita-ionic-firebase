@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
-    <!--<ion-title>{{ isEditMode ? 'Editar' : 'Nuevo' }} {{ item.tipo }}</ion-title>-->
-    <ion-title>{{ isEditMode ? 'Editar' : 'Nuevo' }}</ion-title>
+    <ion-title>{{ getTitulo() }}</ion-title>
+
   </ion-toolbar>
 </ion-header>
 
@@ -36,31 +36,3 @@
 </ion-content>
 
 
-<!--
-<ion-header>
-  <ion-toolbar>
-    <ion-title>{{ isEditMode ? 'Editar' : 'Nuevo' }} {{ item.tipo }}</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-  <ion-list>
-    <ion-item>
-      <ion-label position="floating">Nombre</ion-label>
-      <ion-input [(ngModel)]="item.nombre"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label position="floating">Descripción</ion-label>
-      <ion-textarea [(ngModel)]="item.descripcion"></ion-textarea>
-    </ion-item>
-
-    <ion-item>
-      <ion-label position="floating">Imagen URL</ion-label>
-      <ion-input [(ngModel)]="item.imagenUrl"></ion-input>
-    </ion-item>
-  </ion-list>
-
-  <ion-button expand="block" (click)="saveItem()">Guardar</ion-button>
-</ion-content>
--->

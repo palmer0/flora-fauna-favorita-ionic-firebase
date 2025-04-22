@@ -1,6 +1,12 @@
 import {Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators
+} from '@angular/forms';
 import {IonicModule} from "@ionic/angular";
 import {Router} from "@angular/router";
 import {UserAuthService} from "../../services/user-auth.service";

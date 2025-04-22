@@ -1,6 +1,5 @@
 <ion-header>
   <ion-toolbar>
-    <!--<ion-title>Lo Más Elegido</ion-title>-->
     <ion-title>Home</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -11,6 +10,7 @@
       <ion-thumbnail slot="start">
         <img [src]="item.imagenUrl" />
       </ion-thumbnail>
+
       <ion-label>
         <h2>{{ item.nombre }}</h2>
         <p>{{ item.tipo | titlecase }}</p>

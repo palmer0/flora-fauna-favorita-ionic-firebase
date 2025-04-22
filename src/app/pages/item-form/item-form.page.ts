@@ -39,8 +39,6 @@ export class ItemFormPage implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id');
     const tipoParam = this.route.snapshot.paramMap.get('tipo');
 
-    //console.log(`tipo: ${tipoParam}`);
-
     if (this.id) {
       this.isEditMode = true;
       this.itemListService.getItemById(this.id).subscribe((data) => {
@@ -82,32 +80,13 @@ export class ItemFormPage implements OnInit {
     }
   }
 
-  /*
-  ngOnInit() {
-    this.id = this.route.snapshot.paramMap.get('id');
-    const tipoParam = this.route.snapshot.paramMap.get('tipo');
-
-    if (this.id) {
-      this.isEditMode = true;
-      this.itemListService.getItemById(this.id).subscribe((data) => {
-        this.item = data;
-      });
-    } else if (tipoParam === 'animal' || tipoParam === 'planta') {
-      this.item.tipo = tipoParam;
-    }
+  getTitulo(): string {
+    const tipoCapitalizado =
+      this.item.tipo.charAt(0).toUpperCase() + this.item.tipo.slice(1);
+    const prefijo =
+      this.isEditMode ? 'Editar' : (this.item.tipo === 'animal' ? 'Nuevo' : 'Nueva');
+    return `${prefijo} ${tipoCapitalizado}`;
   }
 
-  saveItem() {
-    if (this.isEditMode && this.id) {
-      this.itemListService.updateItem(this.id, this.item).then(() => {
-        this.router.navigate(['/item-list', this.item.tipo]);
-      });
-    } else {
-      this.itemListService.addItem(this.item).then(() => {
-        this.router.navigate(['/item-list', this.item.tipo]);
-      });
-    }
-  }
-  */
 
 }

@@ -64,14 +64,6 @@ export class ItemListService {
     return collectionData(q, { idField: 'id' }) as Observable<Item[]>;
   }
 
-  /*
-  incrementElegido(id: string): Promise<void> {
-    const itemDoc = doc(this.firestore, `items/${id}`);
-    return updateDoc(itemDoc, {
-      vecesElegido: (new Date()).getTime(), // puedes personalizar el incremento
-    });
-  }
-  */
 
   incrementElegido(id: string): Promise<void> {
     const itemRef = doc(this.firestore, `items/${id}`);

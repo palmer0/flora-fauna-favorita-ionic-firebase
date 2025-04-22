@@ -25,34 +25,5 @@
     {{ isFavorito ? 'Quitar de favoritos' : 'Añadir a favoritos' }}
   </ion-button>
 
-
-  <!--
-  <ion-button expand="block" color="primary" (click)="marcarMeGusta(item)">
-    <ion-icon name="heart" slot="start"></ion-icon>
-    Me gusta
-  </ion-button>
-  -->
 </ion-content>
 
-
-
-<!--
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Detalle</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content *ngIf="item$ | async as item">
-  <ion-card>
-    <img [src]="item.imagenUrl" />
-    <ion-card-header>
-      <ion-card-title>{{ item.nombre }}</ion-card-title>
-      <ion-card-subtitle>{{ item.tipo | titlecase }}</ion-card-subtitle>
-    </ion-card-header>
-    <ion-card-content>
-      {{ item.descripcion }}
-    </ion-card-content>
-  </ion-card>
-</ion-content>
--->

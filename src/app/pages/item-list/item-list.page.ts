@@ -35,11 +35,6 @@ export class ItemListPage implements OnInit {
     this.items$ = this.itemListService.getItemsByTipo(this.tipo);
   }
 
-  /*
-  openDetail(itemId: string) {
-    this.router.navigate(['/item-detail', itemId]);
-  }
-  */
 
   openDetail(itemId: string) {
     this.itemListService.incrementElegido(itemId).then(() => {

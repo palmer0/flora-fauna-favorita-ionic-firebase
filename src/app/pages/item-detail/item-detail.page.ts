@@ -31,25 +31,6 @@ export class ItemDetailPage implements OnInit {
     private itemListService: ItemListService
   ) {}
 
-  /*
-  ngOnInit() {
-    this.itemId = this.route.snapshot.paramMap.get('id')!;
-    this.item$ = this.itemListService.getItemById(this.itemId);
-
-    if (this.authService.getCurrentUser()) {
-      this.favoritosService.isFavorito(this.itemId).then(result => {
-        this.isFavorito = result;
-      });
-    }
-  }
-  */
-
-  /*
-  ngOnInit() {
-    this.itemId = this.route.snapshot.paramMap.get('id')!;
-    this.item$ = this.itemListService.getItemById(this.itemId);
-  }
-  */
 
   ngOnInit() {
     this.itemId = this.route.snapshot.paramMap.get('id')!;
@@ -79,40 +60,5 @@ export class ItemDetailPage implements OnInit {
 
     this.isFavorito = !this.isFavorito;
   }
-
-  /*
-  async toggleFavorito(item: Item) {
-    if (!this.authService.getCurrentUser()) return;
-    if (this.isFavorito) {
-      await this.favoritosService.removeFavorito(item.id!);
-    } else {
-      await this.favoritosService.addFavorito(item);
-    }
-    this.isFavorito = !this.isFavorito;
-  }
-  */
-
-  /*
-  marcarMeGusta(item: Item) {
-    this.itemListService.incrementElegido(item.id!).then(() => {
-      // Aquí luego llamaremos a marcar como favorito
-      console.log('¡Voto registrado!');
-    });
-  }
-  */
-
-  /*
-  item$!: Observable<Item>;
-
-  constructor(
-    private route: ActivatedRoute,
-    private itemListService: ItemListService
-  ) {}
-
-  ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id')!;
-    this.item$ = this.itemListService.getItemById(id);
-  }
-  */
 
 }
