@@ -85,6 +85,7 @@ export class ItemFormPage implements OnInit {
       this.item.tipo.charAt(0).toUpperCase() + this.item.tipo.slice(1);
     const prefijo =
       this.isEditMode ? 'Editar' : (this.item.tipo === 'animal' ? 'Nuevo' : 'Nueva');
+
     return `${prefijo} ${tipoCapitalizado}`;
   }
 
