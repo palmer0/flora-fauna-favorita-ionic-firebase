@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import {Component, OnInit} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
 import {Observable} from "rxjs";
 import {Item} from "../../models/item.model";
 import {ActivatedRoute} from "@angular/router";
@@ -70,11 +69,14 @@ export class ItemDetailPage implements OnInit {
 
   async toggleFavorito(item: Item) {
     if (!this.user) return;
+
     if (this.isFavorito) {
       await this.favoritosService.removeFavorito(item.id!);
+
     } else {
       await this.favoritosService.addFavorito(item);
     }
+
     this.isFavorito = !this.isFavorito;
   }
 

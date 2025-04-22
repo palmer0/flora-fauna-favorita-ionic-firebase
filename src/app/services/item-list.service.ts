@@ -1,24 +1,21 @@
-// src/app/services/item-list.service.ts
-
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {
-  Firestore,
   collection,
   collectionData,
+  deleteDoc,
   doc,
   docData,
-  setDoc,
-  updateDoc,
-  deleteDoc,
-  addDoc,
+  Firestore,
+  limit,
+  orderBy,
   query,
   runTransaction,
-  where,
-  orderBy,
-  limit
+  setDoc,
+  updateDoc,
+  where
 } from '@angular/fire/firestore';
-import { Item } from '../models/item.model';
-import { Observable } from 'rxjs';
+import {Item} from '../models/item.model';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -34,7 +31,8 @@ export class ItemListService {
   }
 
   getItemsByTipo(tipo: 'animal' | 'planta'): Observable<Item[]> {
-    const q = query(this.itemListRef, where('tipo', '==', tipo));
+    const q =
+      query(this.itemListRef, where('tipo', '==', tipo));
     return collectionData(q, { idField: 'id' }) as Observable<Item[]>;
   }
 
@@ -61,7 +59,8 @@ export class ItemListService {
   }
 
   getMostChosenItems(limitCount: number = 10): Observable<Item[]> {
-    const q = query(this.itemListRef, orderBy('vecesElegido', 'desc'), limit(limitCount));
+    const q =
+      query(this.itemListRef, orderBy('vecesElegido', 'desc'), limit(limitCount));
     return collectionData(q, { idField: 'id' }) as Observable<Item[]>;
   }
 
@@ -76,11 +75,13 @@ export class ItemListService {
 
   incrementElegido(id: string): Promise<void> {
     const itemRef = doc(this.firestore, `items/${id}`);
+
     return runTransaction(this.firestore, async (transaction) => {
       const snapshot = await transaction.get(itemRef);
       if (!snapshot.exists()) {
         throw new Error('Item not found');
       }
+
       const data = snapshot.data() as Item;
       const nuevosVotos = (data.vecesElegido || 0) + 1;
       transaction.update(itemRef, { vecesElegido: nuevosVotos });

@@ -39,6 +39,51 @@ async function uploadImage(filePath, nombre) {
   return url;
 }
 
+
+/*
+
+// === Nuevos Animales ===
+
+{
+  nombre: 'Castor',
+    descripcion: 'Mamífero semiacuático conocido por construir presas y diques con troncos.',
+  tipo: 'animal',
+  imagenUrl: 'https://your-storage-url/castor.jpg',
+  vecesElegido: Math.floor(Math.random() * 100),
+  fechaCreacion: Date.now()
+},
+{
+  nombre: 'Camaleón',
+    descripcion: 'Reptil capaz de cambiar de color y mover los ojos de forma independiente.',
+  tipo: 'animal',
+  imagenUrl: 'https://your-storage-url/camaleon.jpg',
+  vecesElegido: Math.floor(Math.random() * 100),
+  fechaCreacion: Date.now()
+},
+*/
+
+/*
+
+// === Nuevas Plantas ===
+
+{
+  nombre: 'Menta',
+    descripcion: 'Planta aromática utilizada en infusiones y cocina por su frescura.',
+  tipo: 'planta',
+  imagenUrl: 'https://your-storage-url/menta.jpg',
+  vecesElegido: Math.floor(Math.random() * 100),
+  fechaCreacion: Date.now()
+},
+{
+  nombre: 'Girasol',
+    descripcion: 'Planta con flores grandes y amarillas que giran siguiendo al sol.',
+  tipo: 'planta',
+  imagenUrl: 'https://your-storage-url/girasol.jpg',
+  vecesElegido: Math.floor(Math.random() * 100),
+  fechaCreacion: Date.now()
+},
+*/
+
 async function crearItems() {
   for (const tipo of tipos) {
     for (let i = 1; i <= 5; i++) {

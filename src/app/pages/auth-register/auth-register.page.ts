@@ -1,7 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import {Component} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators
+} from '@angular/forms';
 import {IonicModule} from "@ionic/angular";
 import {Router} from "@angular/router";
 import {UserAuthService} from "../../services/user-auth.service";
@@ -11,7 +16,12 @@ import {UserAuthService} from "../../services/user-auth.service";
   templateUrl: './auth-register.page.html',
   styleUrls: ['./auth-register.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, ReactiveFormsModule]
+  imports: [
+    IonicModule,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule
+  ]
 })
 export class AuthRegisterPage {
 
@@ -22,6 +32,7 @@ export class AuthRegisterPage {
     private authService: UserAuthService,
     private router: Router
   ) {
+
     this.form = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -30,9 +41,11 @@ export class AuthRegisterPage {
 
   async register() {
     const { email, password } = this.form.value;
+
     try {
       await this.authService.register(email, password);
       this.router.navigate(['/']);
+
     } catch (err) {
       console.error('Register error:', err);
     }

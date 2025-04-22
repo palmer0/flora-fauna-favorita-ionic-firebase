@@ -1,6 +1,7 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Lista de {{ tipo }}s</ion-title>
+    <!--<ion-title>Lista de {{ tipo }}s</ion-title>-->
+    <ion-title>Lista</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -10,6 +11,7 @@
       <ion-thumbnail slot="start">
         <img [src]="item.imagenUrl" />
       </ion-thumbnail>
+
       <ion-label>
         <h2>{{ item.nombre }}</h2>
         <p>{{ item.descripcion }}</p>
@@ -17,11 +19,14 @@
     </ion-item>
   </ion-list>
 
+  <!--
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="addNewItem()">
       <ion-icon name="add"></ion-icon>
+
     </ion-fab-button>
   </ion-fab>
+  -->
 </ion-content>
 
 

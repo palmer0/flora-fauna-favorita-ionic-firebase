@@ -1,15 +1,15 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {
-  Firestore,
   collection,
-  doc,
-  setDoc,
+  collectionData,
   deleteDoc,
+  doc,
+  Firestore,
   getDoc,
-  collectionData
+  setDoc
 } from '@angular/fire/firestore';
-import { Item } from '../models/item.model';
-import { Observable } from 'rxjs';
+import {Item} from '../models/item.model';
+import {Observable} from 'rxjs';
 import {UserAuthService} from "./user-auth.service";
 
 @Injectable({
@@ -34,7 +34,8 @@ export class ItemFavoritesService {
   }
 
   addFavorito(item: Item): Promise<void> {
-    const favoritosRef = doc(this.firestore, `users/${this.getUserId()}/favoritos/${item.id}`);
+    const favoritosRef =
+      doc(this.firestore, `users/${this.getUserId()}/favoritos/${item.id}`);
     return setDoc(favoritosRef, {
       nombre: item.nombre,
       tipo: item.tipo,
@@ -44,12 +45,14 @@ export class ItemFavoritesService {
   }
 
   removeFavorito(itemId: string): Promise<void> {
-    const favoritoRef = doc(this.firestore, `users/${this.getUserId()}/favoritos/${itemId}`);
+    const favoritoRef =
+      doc(this.firestore, `users/${this.getUserId()}/favoritos/${itemId}`);
     return deleteDoc(favoritoRef);
   }
 
   isFavorito(itemId: string): Promise<boolean> {
-    const favoritoRef = doc(this.firestore, `users/${this.getUserId()}/favoritos/${itemId}`);
+    const favoritoRef =
+      doc(this.firestore, `users/${this.getUserId()}/favoritos/${itemId}`);
     return getDoc(favoritoRef).then(snapshot => snapshot.exists());
   }
 

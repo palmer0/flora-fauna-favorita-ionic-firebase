@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import {Component, OnInit} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
 import {ActivatedRoute, Router} from "@angular/router";
 import {Item} from "../../models/item.model";
 import {ItemListService} from "../../services/item-list.service";
@@ -40,11 +39,14 @@ export class ItemFormPage implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id');
     const tipoParam = this.route.snapshot.paramMap.get('tipo');
 
+    //console.log(`tipo: ${tipoParam}`);
+
     if (this.id) {
       this.isEditMode = true;
       this.itemListService.getItemById(this.id).subscribe((data) => {
         this.item = data;
       });
+
     } else if (tipoParam === 'animal' || tipoParam === 'planta') {
       this.item.tipo = tipoParam;
     }
@@ -55,9 +57,11 @@ export class ItemFormPage implements OnInit {
     if (!file) return;
 
     this.uploading = true;
+
     try {
       const url = await this.uploadService.uploadImage(file);
       this.item.imagenUrl = url;
+
     } catch (err) {
       console.error('Error al subir imagen:', err);
     } finally {
@@ -70,6 +74,7 @@ export class ItemFormPage implements OnInit {
       this.itemListService.updateItem(this.id, this.item).then(() => {
         this.router.navigate(['/item-list', this.item.tipo]);
       });
+
     } else {
       this.itemListService.addItem(this.item).then(() => {
         this.router.navigate(['/item-list', this.item.tipo]);
