@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {ActivatedRoute, Router} from "@angular/router";
@@ -6,6 +6,7 @@ import {Item} from "../../models/item.model";
 import {ItemListService} from "../../services/item-list.service";
 import {IonicModule} from "@ionic/angular";
 import {ImageUploadService} from "../../services/image-upload.service";
+
 
 @Component({
   selector: 'app-item-form',
@@ -15,6 +16,11 @@ import {ImageUploadService} from "../../services/image-upload.service";
   imports: [IonicModule, CommonModule, FormsModule]
 })
 export class ItemFormPage implements OnInit {
+
+  private router = inject(Router);
+  private route = inject(ActivatedRoute);
+  private uploadService = inject(ImageUploadService);
+  private itemListService = inject(ItemListService);
 
   item: Item = {
     nombre: '',
@@ -27,12 +33,6 @@ export class ItemFormPage implements OnInit {
   id: string | null = null;
   uploading = false;
 
-  constructor(
-    private route: ActivatedRoute,
-    private itemListService: ItemListService,
-    private router: Router,
-    private uploadService: ImageUploadService,
-  ) {}
 
 
   ngOnInit() {

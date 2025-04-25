@@ -42,10 +42,10 @@ export class ItemListService {
   }
 
   addItem(item: Item): Promise<void> {
-    const newItemRef = doc(collection(this.firestore, 'items'));
+    const itemRef = doc(collection(this.firestore, 'items'));
     item.fechaCreacion = Date.now();
     item.vecesElegido = 0;
-    return setDoc(newItemRef, item);
+    return setDoc(itemRef, item);
   }
 
   updateItem(id: string, item: Partial<Item>): Promise<void> {

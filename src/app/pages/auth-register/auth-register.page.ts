@@ -1,12 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {
-  FormBuilder,
-  FormGroup,
-  FormsModule,
-  ReactiveFormsModule,
-  Validators
-} from '@angular/forms';
+import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {IonicModule} from "@ionic/angular";
 import {Router} from "@angular/router";
 import {UserAuthService} from "../../services/user-auth.service";
@@ -25,13 +19,13 @@ import {UserAuthService} from "../../services/user-auth.service";
 })
 export class AuthRegisterPage {
 
+  private fb = inject(FormBuilder);
+  private authService = inject(UserAuthService);
+  private router = inject(Router);
+
   form: FormGroup;
 
-  constructor(
-    private fb: FormBuilder,
-    private authService: UserAuthService,
-    private router: Router
-  ) {
+  constructor() {
 
     this.form = this.fb.group({
       email: ['', [Validators.required, Validators.email]],

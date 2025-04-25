@@ -14,12 +14,12 @@ import {
 })
 export class UserAuthService {
 
-  private currentUserSubject = new BehaviorSubject<User | null>(null);
-  currentUser$ = this.currentUserSubject.asObservable();
+  private userSubject = new BehaviorSubject<User | null>(null);
+  currentUser$ = this.userSubject.asObservable();
 
   constructor(private auth: Auth) {
     onAuthStateChanged(this.auth, user => {
-      this.currentUserSubject.next(user);
+      this.userSubject.next(user);
     });
   }
 

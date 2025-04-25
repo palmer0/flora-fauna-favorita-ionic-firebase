@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {Observable} from "rxjs";
@@ -21,14 +21,12 @@ import {IonicModule} from "@ionic/angular";
 })
 export class ItemListPage implements OnInit {
 
+  private router = inject(Router);
+  private route = inject(ActivatedRoute);
+  private itemListService = inject(ItemListService);
+
   tipo: 'animal' | 'planta' = 'animal';
   items$!: Observable<Item[]>;
-
-  constructor(
-    private itemListService: ItemListService,
-    private route: ActivatedRoute,
-    private router: Router
-  ) {}
 
   ngOnInit() {
     this.tipo = this.route.snapshot.paramMap.get('tipo') as 'animal' | 'planta';

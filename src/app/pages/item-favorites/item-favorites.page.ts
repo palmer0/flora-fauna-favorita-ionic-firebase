@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {Observable} from "rxjs";
@@ -15,12 +15,11 @@ import {IonicModule} from "@ionic/angular";
 })
 export class ItemFavoritesPage implements OnInit {
 
+  private router = inject(Router);
+  private favoritosService = inject(ItemFavoritesService);
+
   favoritos$!: Observable<any[]>;
 
-  constructor(
-    private favoritosService: ItemFavoritesService,
-    private router: Router
-  ) {}
 
   ngOnInit() {
     this.favoritos$ = this.favoritosService.getMisFavoritos();

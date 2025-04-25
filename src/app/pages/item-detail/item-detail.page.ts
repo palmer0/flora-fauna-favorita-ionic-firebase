@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {Observable} from "rxjs";
@@ -20,18 +20,16 @@ import {doc, Firestore, onSnapshot} from "@angular/fire/firestore";
 })
 export class ItemDetailPage implements OnInit {
 
+  private firestore = inject(Firestore);
+  private route = inject(ActivatedRoute);
+  private favoritosService = inject(ItemFavoritesService);
+  private authService = inject(UserAuthService);
+  private itemListService = inject(ItemListService);
+
   item$!: Observable<Item>;
   //itemId!: string;
   isFavorito = false;
   user: User | null = null;
-
-  constructor(
-    private route: ActivatedRoute,
-    private favoritosService: ItemFavoritesService,
-    private authService: UserAuthService,
-    private itemListService: ItemListService,
-    private firestore: Firestore,
-  ) {}
 
 
   /*
