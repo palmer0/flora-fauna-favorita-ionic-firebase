@@ -96,11 +96,24 @@
 
 
   <!-- Contenido principal -->
+  <ion-header>
+    <ion-toolbar color="primary">
+
+      <ion-buttons slot="start">
+        <ion-menu-button autoHide="false"></ion-menu-button>
+      </ion-buttons>
+
+      <ion-title>Flora & Fauna</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-router-outlet id="main-content"></ion-router-outlet>
+
+  <!--
   <ion-content fullscreen="true" id="main-content">
     <ion-header>
       <ion-toolbar color="primary">
 
-        <!-- Botón hamburguesa -->
         <ion-buttons slot="start">
           <ion-menu-button autoHide="false"></ion-menu-button>
         </ion-buttons>
@@ -111,6 +124,7 @@
 
     <ion-router-outlet></ion-router-outlet>
   </ion-content>
+  -->
 
 </ion-app>
 

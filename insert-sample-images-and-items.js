@@ -46,7 +46,7 @@ async function uploadImage(filePath, nombre) {
 
 {
   nombre: 'Castor',
-    descripcion: 'Mamífero semiacuático conocido por construir presas y diques con troncos.',
+  descripcion: 'Mamífero semiacuático conocido por construir presas y diques con troncos.',
   tipo: 'animal',
   imagenUrl: 'https://your-storage-url/castor.jpg',
   vecesElegido: Math.floor(Math.random() * 100),
@@ -54,7 +54,7 @@ async function uploadImage(filePath, nombre) {
 },
 {
   nombre: 'Camaleón',
-    descripcion: 'Reptil capaz de cambiar de color y mover los ojos de forma independiente.',
+  descripcion: 'Reptil capaz de cambiar de color y mover los ojos de forma independiente.',
   tipo: 'animal',
   imagenUrl: 'https://your-storage-url/camaleon.jpg',
   vecesElegido: Math.floor(Math.random() * 100),
@@ -68,7 +68,7 @@ async function uploadImage(filePath, nombre) {
 
 {
   nombre: 'Menta',
-    descripcion: 'Planta aromática utilizada en infusiones y cocina por su frescura.',
+  descripcion: 'Planta aromática utilizada en infusiones y cocina por su frescura.',
   tipo: 'planta',
   imagenUrl: 'https://your-storage-url/menta.jpg',
   vecesElegido: Math.floor(Math.random() * 100),
@@ -76,7 +76,7 @@ async function uploadImage(filePath, nombre) {
 },
 {
   nombre: 'Girasol',
-    descripcion: 'Planta con flores grandes y amarillas que giran siguiendo al sol.',
+  descripcion: 'Planta con flores grandes y amarillas que giran siguiendo al sol.',
   tipo: 'planta',
   imagenUrl: 'https://your-storage-url/girasol.jpg',
   vecesElegido: Math.floor(Math.random() * 100),

@@ -5,6 +5,7 @@ import {UserAuthService} from "./services/user-auth.service";
 import {IonicModule} from "@ionic/angular";
 import {CommonModule} from "@angular/common";
 import {StatusBar, Style} from '@capacitor/status-bar';
+import {Capacitor} from "@capacitor/core";
 
 @Component({
   selector: 'app-root',
@@ -20,23 +21,26 @@ export class AppComponent {
     private router: Router
   ) {
 
-    //this.initializeApp();
+    if (Capacitor.getPlatform() !== 'web') {
+      StatusBar.setOverlaysWebView({ overlay: false }); // que no se superponga
+      StatusBar.setStyle({ style: Style.Light }); // o Dark, según tu diseño
+
+      //this.initializeApp();
+    }
 
     this.authService.currentUser$.subscribe(user => {
       this.user = user;
 
-      StatusBar.setOverlaysWebView({ overlay: false }); // que no se superponga
-      StatusBar.setStyle({ style: Style.Light }); // o Dark, según tu diseño
     });
 
   }
 
-  /*
+
   async initializeApp() {
     await StatusBar.setOverlaysWebView({ overlay: false }); // que no se superponga
     await StatusBar.setStyle({ style: Style.Light });  // o Style.Dark si el fondo es claro
   }
-  */
+
 
   logout() {
     this.authService.logout().then(() => {
